@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.model.Aggregate;
+import org.example.model.Bot;
 import org.kie.api.KieBase;
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;

@@ -14,7 +14,9 @@
 */
 
 package org.example;
-import org.example.System;
+import org.example.model.SystemConclusion;
+import org.example.model.Aggregate;
+import org.example.model.Bot;
 
 query "Aggregates"
 	$conclusion : Aggregate()
@@ -26,7 +28,7 @@ when
 	Bot( id == "1", executed == true )
 	Bot( id == "2", executed == true )
 then
-	System s = new System("A",true);
+	SystemConclusion s = new SystemConclusion("A",true);
 	insert(s);
 end
 
@@ -36,7 +38,7 @@ when
 	Bot( id == "3", executed == true ) or
 	Bot( id == "4", executed == false )
 then
-	System s = new System("B",true);
+	SystemConclusion s = new SystemConclusion("B",true);
 	insert(s);
 end
 
@@ -46,7 +48,7 @@ when
 	Bot( id == "5", executed == true )
 	Bot( id == "6", executed == false )
 then
-	System s = new System("C",true);
+	SystemConclusion s = new SystemConclusion("C",true);
 	insert(s);
 end
 
@@ -56,15 +58,15 @@ when
 	Bot( id == "7", executed == true ) or
 	Bot( id == "8", executed == true )
 then
-	System s = new System("D",true);
+	SystemConclusion s = new SystemConclusion("D",true);
 	insert(s);
 end
 
 rule "will execute per each System A and System B active"
 no-loop
 when
-	System( id == "A", active == true )
-	System( id == "B", active == true )
+	SystemConclusion( id == "A", active == true )
+	SystemConclusion( id == "B", active == true )
 then
 	Aggregate a = new Aggregate("AB",true);
 	insert(a);
@@ -73,8 +75,8 @@ end
 rule "will execute per each System C and System D active"
 no-loop
 when
-	System ( id == "C", active == true )
-	System( id == "D", active == true )
+	SystemConclusion ( id == "C", active == true )
+	SystemConclusion( id == "D", active == true )
 then
 	Aggregate a = new Aggregate("CD",true);
 	insert(a);

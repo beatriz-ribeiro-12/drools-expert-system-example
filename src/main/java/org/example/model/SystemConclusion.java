@@ -1,10 +1,10 @@
-package org.example;
+package org.example.model;
 
-public class System {
+public class SystemConclusion {
     private String id;
     private boolean active;
 
-    public System(String id, boolean active){
+    public SystemConclusion(String id, boolean active){
         this.id = id;
         this.active = active;
     }
